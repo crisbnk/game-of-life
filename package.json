@@ -1,0 +1,19 @@
+{
+  "name": "game-of-life",
+  "version": "1.0.0",
+  "description": "Building the Game of Life as FCC Project with React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crisbnk/game-of-life.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crisbnk/game-of-life/issues"
+  },
+  "homepage": "https://github.com/crisbnk/game-of-life#readme"
+}
