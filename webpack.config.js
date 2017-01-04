@@ -1,24 +1,24 @@
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + "/app/index.html",
-  filename: "index.html",
-  inject: "body"
-});
+var path = require('path');
+var srcPath = path.join(__dirname, 'src');
+var buildPath = path.join(__dirname, 'dist');
 
 module.exports = {
-  entry: [
-    "./app/index.js"
-  ],
+  context: srcPath,
+  entry: path.join(srcPath, 'js', 'client.js'),
   output: {
-    path: __dirname + "/dist",
-    filename: "index_bundle.js"
+      path: buildPath,
+      filename: "bundle.js"
   },
   module: {
-    loaders:[
-      {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
-      {test: /\.css$/, loaders: ["style", "css"]},
-      {test: /\.scss$/, loaders: ["style", "css", "sass"]}
-    ]
-  },
-  plugins: [HtmlWebpackPluginConfig]
-}
+      loaders: [
+          {
+            test: /\.jsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel',
+            query: {
+              presets: ['react', 'es2015']
+            }
+          }
+      ]
+  }
+};
