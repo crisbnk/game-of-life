@@ -15,13 +15,16 @@ class LifeTable extends React.Component {
   constructor() {
     super();
     // Need to create Array of Array automatically (and give user the possibility to set it)
+    const squares = Array(5).fill().map(() => Array(5).fill(0));
     this.state = {
-      squares: [['00','01','02','03','04'],
-      ['10','11','12','13','14'],
-      ['20','21','22','23','24'],
-      ['30','31','32','33','34'],
-      ['40','41','42','43','44']]
+      squares: squares,
+      rows: 5,
+      cols: 5
     };
+  }
+
+  createMatrix(r, c) {
+    return Array(r).fill().map(() => Array(c).fill(0));
   }
 
   handleClick(i, j) {
@@ -31,19 +34,31 @@ class LifeTable extends React.Component {
   }
 
   giveLife() {
+    let newValues = this.createMatrix(this.state.rows, this.state.cols);
+    console.log(newValues);
     let squares = this.state.squares;
     for(let i = 0; i < squares.length; i++) {
       console.log(squares[i]);
       for(let j = 0; j < squares[i].length; j++) {
+        const value = squares[i][j];
         const n = i - 1 > -1 ? i - 1 : i + (squares.length - 1);
         const s = i + 1 < squares.length ? i + 1 : i - (squares.length - 1);
         const o = j - 1 > -1 ? j - 1 : j + (squares.length - 1);
         const e = j + 1 < squares.length ? j + 1 : j - (squares.length - 1);
-        console.log(`${squares[i][j]}, sopra: ${squares[n][j]}, sotto: ${squares[s][j]}, destra: ${squares[i][e]}, sinistra: ${squares[i][o]}, NE: ${squares[n][e]}, NO: ${squares[n][o]}`);
+        console.log(`${value}, sopra: ${squares[n][j]}, sotto: ${squares[s][j]}, destra: ${squares[i][e]}, sinistra: ${squares[i][o]}, NE: ${squares[n][e]}, NO: ${squares[n][o]}`);
         const neighborhood = [squares[n][j], squares[s][j], squares[i][e], squares[i][o], squares[n][e], squares[n][o], squares[s][e], squares[s][o]];
         const tot = neighborhood.reduce((a, b) => a + b);
         console.log(`squares ${i}${j} neighborhood is: ${tot}`);
+        if(value === 0 && tot === 3) {
+          newValues[i][j] = 1;
+        } else if(value === 1 && (tot >= 2 && tot <= 3)) {
+          newValues[i][j] = 1;
+        } else {
+          newValues[i][j] = 0;
+        }
       }
+      console.log(`New values are: `, newValues);
+      this.setState({squares: newValues});
     }
   }
 
