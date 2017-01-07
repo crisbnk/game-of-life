@@ -5,11 +5,11 @@ import Square from './square.js';
 export default class LifeTable extends React.Component {
   constructor() {
     super();
-    // Need to create Array of Array automatically
-    // (and give user the possibility to set it)
+    /* Need to create Array of Array automatically
+    (and give user the possibility to set it) */
     const rows = 10;
     const cols = 10;
-    const squares = Array(rows).fill().map(() => Array(cols).fill(0));
+    const squares = this.randomValues(this.createMatrix(rows, cols, 0));
     this.state = {
       squares: squares,
       rows: rows,
@@ -17,8 +17,19 @@ export default class LifeTable extends React.Component {
     };
   }
 
-  createMatrix(r, c) {
-    return Array(r).fill().map(() => Array(c).fill(0));
+  createMatrix(r, c, num) {
+    return Array(r).fill().map(() => Array(c).fill(num));
+  }
+
+  randomValues(multiArr) {
+    multiArr = multiArr.map(row => {
+      const rows = row.map(cell => {
+        cell = Math.round(Math.random());
+        return cell;
+      });
+      return rows;
+    });
+    return multiArr;
   }
 
   handleClick(i, j) {
@@ -32,7 +43,7 @@ export default class LifeTable extends React.Component {
   }
 
   giveLife() {
-    let newValues = this.createMatrix(this.state.rows, this.state.cols);
+    let newValues = this.createMatrix(this.state.rows, this.state.cols, 0);
     console.log(newValues);
     let squares = this.state.squares;
     for (let i = 0; i < squares.length; i++) {
@@ -88,7 +99,7 @@ export default class LifeTable extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='lifeTable'>
         {this.renderBoard()}
         <div className='button' onClick={() => this.giveLife()}>
           <button>Procedi</button>
