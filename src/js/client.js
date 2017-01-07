@@ -15,11 +15,13 @@ class LifeTable extends React.Component {
   constructor() {
     super();
     // Need to create Array of Array automatically (and give user the possibility to set it)
-    const squares = Array(5).fill().map(() => Array(5).fill(0));
+    const rows = 10;
+    const cols = 10;
+    const squares = Array(rows).fill().map(() => Array(cols).fill(0));
     this.state = {
       squares: squares,
-      rows: 5,
-      cols: 5
+      rows: rows,
+      cols: cols
     };
   }
 
@@ -66,47 +68,21 @@ class LifeTable extends React.Component {
     return <Square value={this.state.squares[i][j]} onClick={() => this.handleClick(i, j)} />;
   }
 
+  renderBoard() {
+    const squares = this.state.squares;
+    const rows = squares.map((row, i) => {
+      const cellsInRow = row.map((cell, j) => {
+        return <span key={i + "" + j}>{this.renderSquare(i,j)}</span>;
+      });
+      return <div key={i} className="board-row">{cellsInRow}</div>;
+    });
+    return <div>{rows}</div>
+  }
+
   render() {
     return (
       <div>
-        <div>
-          {/* Need to create the board automatically from user input */}
-          <div className="board-row">
-            {this.renderSquare(0,0)}
-            {this.renderSquare(0,1)}
-            {this.renderSquare(0,2)}
-            {this.renderSquare(0,3)}
-            {this.renderSquare(0,4)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(1,0)}
-            {this.renderSquare(1,1)}
-            {this.renderSquare(1,2)}
-            {this.renderSquare(1,3)}
-            {this.renderSquare(1,4)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(2,0)}
-            {this.renderSquare(2,1)}
-            {this.renderSquare(2,2)}
-            {this.renderSquare(2,3)}
-            {this.renderSquare(2,4)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3,0)}
-            {this.renderSquare(3,1)}
-            {this.renderSquare(3,2)}
-            {this.renderSquare(3,3)}
-            {this.renderSquare(3,4)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(4,0)}
-            {this.renderSquare(4,1)}
-            {this.renderSquare(4,2)}
-            {this.renderSquare(4,3)}
-            {this.renderSquare(4,4)}
-          </div>
-        </div>
+        {this.renderBoard()}
         <div className="button" onClick={() => this.giveLife()}>
           <button>Procedi</button>
         </div>
