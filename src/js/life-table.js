@@ -6,10 +6,6 @@ export default class LifeTable extends React.Component {
     this.props.handleClick(i, j);
   }
 
-  giveLife() {
-    this.props.giveLife();
-  }
-
   renderSquare(i, j) {
     return (
       <Square
@@ -34,9 +30,6 @@ export default class LifeTable extends React.Component {
     return (
       <div className='lifeTable'>
         {this.renderBoard()}
-        <div className='button' onClick={() => this.giveLife()}>
-          <button>Procedi</button>
-        </div>
       </div>
     );
   }

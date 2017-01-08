@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import LifeTable from './life-table.js';
+import Timer from './timer.js';
 import Settings from './settings.js';
 
 import {createMatrix, randomValues} from './utils.js';
@@ -8,16 +9,37 @@ import {createMatrix, randomValues} from './utils.js';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    /* Need to create Array of Array automatically
-    (and give user the possibility to set it) */
     const rows = 10;
     const cols = 10;
+    // Need to let user choose interval
+    const speed = '4000';
     const squares = randomValues(createMatrix(rows, cols, 0));
     this.state = {
       squares: squares,
       rows: rows,
-      cols: cols
+      cols: cols,
+      speed: speed
     };
+    this.giveLife = this.giveLife.bind(this);
+  }
+
+  componentDidMount() {
+    const speed = parseInt(this.state.speed, 10);
+    this.timerId = setInterval(this.giveLife, speed);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  startTimer() {
+    const speed = parseInt(this.state.speed, 10);
+    this.timerId = setInterval(this.giveLife, speed);
+  }
+
+  stopTimer() {
+    console.log('STOP');
+    clearInterval(this.timerId);
   }
 
   handleClick(i, j) {
@@ -73,6 +95,26 @@ class Main extends React.Component {
     }
   }
 
+  boardChange(event) {
+    const rows = parseInt(event.target.value, 10);
+    const squares = randomValues(createMatrix(rows, rows, 0));
+    this.setState({
+      rows: rows,
+      cols: rows,
+      squares: squares
+    });
+  }
+
+  speedChange(event) {
+    this.stopTimer();
+    const speed = event.target.value;
+    console.log(speed);
+    this.setState({
+      speed: speed
+    });
+    this.startTimer();
+  }
+
   render() {
     return (
       <div className='main'>
@@ -82,7 +124,16 @@ class Main extends React.Component {
           giveLife={this.giveLife.bind(this)}
           handleClick={this.handleClick.bind(this)}
         />
-        <Settings />
+        <Timer
+          startTimer={() => this.startTimer()}
+          stopTimer={() => this.stopTimer()}
+        />
+        <Settings
+          boardChange={this.boardChange.bind(this)}
+          rows={this.state.rows}
+          speed={this.state.speed}
+          speedChange={this.speedChange.bind(this)}
+        />
       </div>
     );
   }
