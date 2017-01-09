@@ -2,6 +2,7 @@ const path = require('path');
 
 const srcPath = path.join(__dirname, 'src');
 const buildPath = path.join(__dirname, 'dist');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: srcPath,
@@ -10,6 +11,7 @@ module.exports = {
     path: buildPath,
     filename: 'bundle.js'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {
@@ -19,7 +21,16 @@ module.exports = {
         query: {
           presets: ['react', 'es2015']
         }
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css!sass')
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin(path.join(buildPath, 'main.scss'), {
+        allChunks: true
+    })
+   ]
 };

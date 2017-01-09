@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import LifeTable from './life-table.js';
 import Timer from './timer.js';
 import Settings from './settings.js';
+import style from '../style/main.scss';
 
 import {createMatrix, randomValues} from './utils.js';
 
