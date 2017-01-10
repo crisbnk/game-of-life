@@ -5,18 +5,25 @@ export default class Settings extends React.Component {
     return (
       <div className='settings'>
         <h2>Settings</h2>
-        <p>Table dimension</p>
-        <select onChange={this.props.boardChange} value={this.props.rows}>
-          <option value='10'>10 x 10</option>
-          <option value='20'>20 x 20</option>
-          <option value='30'>30 x 30</option>
-          <option value='40'>40 x 40</option>
+        <p>Table dimension - Rows</p>
+        <select onChange={this.props.rowsChange} value={this.props.rows}>
+          <option value='10'>10</option>
+          <option value='20'>20</option>
+          <option value='30'>30</option>
+          <option value='40'>40</option>
+        </select>
+        <p>Table dimension - Cols</p>
+        <select onChange={this.props.colsChange} value={this.props.cols}>
+          <option value='10'>10</option>
+          <option value='20'>20</option>
+          <option value='30'>30</option>
+          <option value='40'>40</option>
         </select>
         <p>Speed</p>
         <select onChange={this.props.speedChange} value={this.props.speed}>
-          <option value='2000'>Fast</option>
-          <option value='4000'>Normal</option>
-          <option value='6000'>Slow</option>
+          <option value='500'>Fast</option>
+          <option value='1000'>Normal</option>
+          <option value='2000'>Slow</option>
         </select>
       </div>
     );
@@ -24,8 +31,10 @@ export default class Settings extends React.Component {
 }
 
 Settings.propTypes = {
-  boardChange: React.PropTypes.func.isRequired,
+  cols: React.PropTypes.number.isRequired,
+  colsChange: React.PropTypes.func.isRequired,
   rows: React.PropTypes.number.isRequired,
+  rowsChange: React.PropTypes.func.isRequired,
   speed: React.PropTypes.string.isRequired,
   speedChange: React.PropTypes.func.isRequired
 };

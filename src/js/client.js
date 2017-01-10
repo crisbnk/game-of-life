@@ -13,13 +13,14 @@ class Main extends React.Component {
     const rows = 10;
     const cols = 10;
     // Need to let user choose interval
-    const speed = '4000';
+    const speed = '1000';
     const squares = randomValues(createMatrix(rows, cols, 0));
     this.state = {
       squares: squares,
       rows: rows,
       cols: cols,
-      speed: speed
+      speed: speed,
+      generation: 0
     };
     this.giveLife = this.giveLife.bind(this);
   }
@@ -56,6 +57,7 @@ class Main extends React.Component {
   }
 
   giveLife() {
+    let generation = this.state.generation;
     let newValues = createMatrix(
       this.state.rows,
       this.state.cols,
@@ -89,20 +91,48 @@ class Main extends React.Component {
           newValues[i][j] = 0;
         }
       }
-      console.log('New values are: ', newValues);
-      this.setState({
-        squares: newValues
-      });
     }
+    generation++;
+    this.setState({
+      squares: newValues,
+      generation: generation
+    });
   }
 
-  boardChange(event) {
+  colsChange(event) {
+    this.stopTimer();
+    this.clearBoard();
+    const rows = this.state.rows;
+    const cols = parseInt(event.target.value, 10);
+    const squares = createMatrix(rows, cols, 0);
+    this.setState({
+      cols: cols,
+      squares: squares
+    });
+  }
+
+  rowsChange(event) {
+    this.stopTimer();
+    this.clearBoard();
     const rows = parseInt(event.target.value, 10);
-    const squares = randomValues(createMatrix(rows, rows, 0));
+    const cols = this.state.cols;
+    const squares = createMatrix(rows, cols, 0);
     this.setState({
       rows: rows,
-      cols: rows,
       squares: squares
+    });
+  }
+
+  clearBoard() {
+    const clearValues = createMatrix(
+      this.state.rows,
+      this.state.cols,
+      0
+    );
+    this.stopTimer();
+    this.setState({
+      squares: clearValues,
+      generation: 0
     });
   }
 
@@ -118,7 +148,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div className='main'>
+      <div className='main container'>
         <h1>Game of Life</h1>
         <LifeTable
           {...this.state}
@@ -126,12 +156,16 @@ class Main extends React.Component {
           handleClick={this.handleClick.bind(this)}
         />
         <Timer
+          clearBoard={() => this.clearBoard()}
+          generation={this.state.generation}
           startTimer={() => this.startTimer()}
           stopTimer={() => this.stopTimer()}
         />
         <Settings
-          boardChange={this.boardChange.bind(this)}
+          cols={this.state.cols}
+          colsChange={this.colsChange.bind(this)}
           rows={this.state.rows}
+          rowsChange={this.rowsChange.bind(this)}
           speed={this.state.speed}
           speedChange={this.speedChange.bind(this)}
         />
