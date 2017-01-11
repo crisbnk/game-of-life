@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Counter from './counter.js';
 import LifeTable from './life-table.js';
 import Timer from './timer.js';
 import Settings from './settings.js';
@@ -149,26 +150,34 @@ class Main extends React.Component {
   render() {
     return (
       <div className='main container'>
-        <h1>Game of Life</h1>
-        <LifeTable
-          {...this.state}
-          giveLife={this.giveLife.bind(this)}
-          handleClick={this.handleClick.bind(this)}
-        />
-        <Timer
-          clearBoard={() => this.clearBoard()}
-          generation={this.state.generation}
-          startTimer={() => this.startTimer()}
-          stopTimer={() => this.stopTimer()}
-        />
-        <Settings
-          cols={this.state.cols}
-          colsChange={this.colsChange.bind(this)}
-          rows={this.state.rows}
-          rowsChange={this.rowsChange.bind(this)}
-          speed={this.state.speed}
-          speedChange={this.speedChange.bind(this)}
-        />
+        <div className='title'>
+          <h1>Game of Life</h1>
+        </div>
+        <div className='game'>
+          <div className='controller'>
+            <Counter
+              clearBoard={() => this.clearBoard()}
+              generation={this.state.generation}
+            />
+            <Timer
+              startTimer={() => this.startTimer()}
+              stopTimer={() => this.stopTimer()}
+            />
+          </div>
+          <LifeTable
+            {...this.state}
+            giveLife={this.giveLife.bind(this)}
+            handleClick={this.handleClick.bind(this)}
+          />
+          <Settings
+            cols={this.state.cols}
+            colsChange={this.colsChange.bind(this)}
+            rows={this.state.rows}
+            rowsChange={this.rowsChange.bind(this)}
+            speed={this.state.speed}
+            speedChange={this.speedChange.bind(this)}
+          />
+        </div>
       </div>
     );
   }

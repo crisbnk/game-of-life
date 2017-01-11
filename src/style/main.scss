@@ -1,12 +1,62 @@
+$button: 20px;
+$primary: #f3f432;
+$margin: 20px;
+
 .container {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   align-content: center;
 }
 
-h1 {
-  color: red;
+.title {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.game {
+  flex-grow: 3;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;;
+  align-content: center;
+}
+
+.controller {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.lifeTable {
+  flex-grow: 3;
+  text-align: center;
+}
+
+.settings {
+  flex-grow: 1;
+  text-align: center;
+}
+
+button.square.one {
+  height: $button;
+  width: $button;
+  border: none;
+  background-color: $primary;
+  border-radius: $button / 2;
+}
+
+button.square.zero {
+  height: $button;
+  width: $button;
+  border: none;
+  background-color: black;
+  border-radius: $button / 2;
+}
+
+.timer {
+
 }
