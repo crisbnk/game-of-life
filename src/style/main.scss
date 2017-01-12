@@ -1,6 +1,22 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Quicksand');
+$font-header: 'Quicksand', sans-serif;
+$font-text: 'Open Sans', sans-serif;
+// Colors
+$first_col: #236A62;
+$second_col: #AA8639;
+$third_col: #9F3548;
+$pale_col: #FFFFFF;
+$dark_col: #000000;
+
 $button: 20px;
-$primary: #f3f432;
 $margin: 20px;
+
+body {
+  font-family: $font-text;
+  margin: 0;
+  padding: 0;
+}
 
 .container {
   display: flex;
@@ -14,6 +30,7 @@ $margin: 20px;
 .title {
   flex-grow: 1;
   text-align: center;
+  font-family: $font-header;
 }
 
 .game {
@@ -24,6 +41,8 @@ $margin: 20px;
   justify-content: center;
   align-items: center;;
   align-content: center;
+  background-color: $third_col;
+  padding: 25px;
 }
 
 .controller {
@@ -41,11 +60,15 @@ $margin: 20px;
   text-align: center;
 }
 
+button.square {
+  margin: 3px;
+}
+
 button.square.one {
   height: $button;
   width: $button;
   border: none;
-  background-color: $primary;
+  background-color: $first_col;
   border-radius: $button / 2;
 }
 
@@ -53,7 +76,7 @@ button.square.zero {
   height: $button;
   width: $button;
   border: none;
-  background-color: black;
+  background-color: $second_col;
   border-radius: $button / 2;
 }
 

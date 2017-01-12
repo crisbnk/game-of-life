@@ -5,9 +5,7 @@ const Square = ({value, onClick}) => {
     <button
       className={value === 0 ? 'square zero' : 'square one'}
       onClick={() => onClick()}
-      >
-      {value}
-    </button>
+    />
   );
 };
 

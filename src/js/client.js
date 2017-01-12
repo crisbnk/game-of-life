@@ -153,31 +153,31 @@ class Main extends React.Component {
         <div className='title'>
           <h1>Game of Life</h1>
         </div>
+        <div className='controller'>
+          <Counter
+            clearBoard={() => this.clearBoard()}
+            generation={this.state.generation}
+          />
+          <Timer
+            startTimer={() => this.startTimer()}
+            stopTimer={() => this.stopTimer()}
+          />
+        </div>
         <div className='game'>
-          <div className='controller'>
-            <Counter
-              clearBoard={() => this.clearBoard()}
-              generation={this.state.generation}
-            />
-            <Timer
-              startTimer={() => this.startTimer()}
-              stopTimer={() => this.stopTimer()}
-            />
-          </div>
           <LifeTable
             {...this.state}
             giveLife={this.giveLife.bind(this)}
             handleClick={this.handleClick.bind(this)}
           />
-          <Settings
-            cols={this.state.cols}
-            colsChange={this.colsChange.bind(this)}
-            rows={this.state.rows}
-            rowsChange={this.rowsChange.bind(this)}
-            speed={this.state.speed}
-            speedChange={this.speedChange.bind(this)}
-          />
         </div>
+        <Settings
+          cols={this.state.cols}
+          colsChange={this.colsChange.bind(this)}
+          rows={this.state.rows}
+          rowsChange={this.rowsChange.bind(this)}
+          speed={this.state.speed}
+          speedChange={this.speedChange.bind(this)}
+        />
       </div>
     );
   }
