@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Quicksand');
 $font-header: 'Quicksand', sans-serif;
 $font-text: 'Open Sans', sans-serif;
+$font-size: 14px;
 // Colors
 $first_col: #236A62;
 $second_col: #AA8639;
@@ -10,6 +11,7 @@ $pale_col: #FFFFFF;
 $dark_col: #000000;
 
 $button: 20px;
+$border-radius: 10px;
 $margin: 20px;
 
 body {
@@ -25,12 +27,18 @@ body {
   justify-content: center;
   align-items: stretch;
   align-content: center;
+  background-color: $second_col;
 }
 
 .title {
   flex-grow: 1;
   text-align: center;
   font-family: $font-header;
+  color: $first_col;
+}
+
+hr {
+  border-color: $first_col;
 }
 
 .game {
@@ -48,6 +56,16 @@ body {
 .controller {
   flex-grow: 1;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;;
+  align-content: center;
+  padding: 5px;
+  button {
+    margin: 0 10px;
+  }
 }
 
 .lifeTable {
@@ -58,6 +76,34 @@ body {
 .settings {
   flex-grow: 1;
   text-align: center;
+}
+
+.timer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: flex-end;
+}
+
+.counter {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+}
+
+button {
+  background-color: $first_col;
+  color: $second_col;
+  border: none;
+  border-radius: $border-radius;
+  font-size: $font-size;
 }
 
 button.square {
@@ -80,6 +126,13 @@ button.square.zero {
   border-radius: $button / 2;
 }
 
-.timer {
-
+.generation {
+  border: none;
+  height: 20px;
+  width: 50px;
+  background-color: $third_col;
+  color: $second_col;
+  border-radius: $border-radius;
+  font-size: $font-size;
+  text-align: center;
 }

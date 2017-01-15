@@ -152,15 +152,16 @@ class Main extends React.Component {
       <div className='main container'>
         <div className='title'>
           <h1>Game of Life</h1>
+          <hr/>
         </div>
         <div className='controller'>
-          <Counter
-            clearBoard={() => this.clearBoard()}
-            generation={this.state.generation}
-          />
           <Timer
             startTimer={() => this.startTimer()}
             stopTimer={() => this.stopTimer()}
+          />
+          <Counter
+            clearBoard={() => this.clearBoard()}
+            generation={this.state.generation}
           />
         </div>
         <div className='game'>
