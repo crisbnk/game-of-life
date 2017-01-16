@@ -4,15 +4,14 @@ export default class Settings extends React.Component {
   render() {
     return (
       <div className='settings'>
-        <h2>Settings</h2>
-        <p>Table dimension - Rows</p>
+        <p>Rows</p>
         <select onChange={this.props.rowsChange} value={this.props.rows}>
           <option value='10'>10</option>
           <option value='20'>20</option>
           <option value='30'>30</option>
           <option value='40'>40</option>
         </select>
-        <p>Table dimension - Cols</p>
+        <p>Cols</p>
         <select onChange={this.props.colsChange} value={this.props.cols}>
           <option value='10'>10</option>
           <option value='20'>20</option>

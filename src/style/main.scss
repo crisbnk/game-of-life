@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Quicksand');
 $font-header: 'Quicksand', sans-serif;
 $font-text: 'Open Sans', sans-serif;
-$font-size: 14px;
+$font-size: 16px;
 // Colors
 $first_col: #236A62;
 $second_col: #AA8639;
@@ -10,14 +10,19 @@ $third_col: #9F3548;
 $pale_col: #FFFFFF;
 $dark_col: #000000;
 
-$button: 20px;
+$background_col: #D3D7DB;
+
+$button-life: 20px;
 $border-radius: 10px;
 $margin: 20px;
+$button-height: 40px;
+$button-width: 100px;
 
 body {
   font-family: $font-text;
-  margin: 0;
+  margin: 20px 50px;
   padding: 0;
+  background-color: $background_col;
 }
 
 .container {
@@ -27,7 +32,6 @@ body {
   justify-content: center;
   align-items: stretch;
   align-content: center;
-  background-color: $second_col;
 }
 
 .title {
@@ -41,6 +45,16 @@ hr {
   border-color: $first_col;
 }
 
+.menuBar {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;;
+  align-content: center;
+}
+
 .game {
   flex-grow: 3;
   display: flex;
@@ -50,6 +64,7 @@ hr {
   align-items: center;;
   align-content: center;
   background-color: $third_col;
+  margin: 25px;
   padding: 25px;
 }
 
@@ -76,6 +91,12 @@ hr {
 .settings {
   flex-grow: 1;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;;
+  align-content: center;
 }
 
 .timer {
@@ -104,6 +125,8 @@ button {
   border: none;
   border-radius: $border-radius;
   font-size: $font-size;
+  height: $button-height;
+  width: $button-width;
 }
 
 button.square {
@@ -111,28 +134,28 @@ button.square {
 }
 
 button.square.one {
-  height: $button;
-  width: $button;
+  height: $button-life;
+  width: $button-life;
   border: none;
   background-color: $first_col;
-  border-radius: $button / 2;
+  border-radius: $button-life / 2;
 }
 
 button.square.zero {
-  height: $button;
-  width: $button;
+  height: $button-life;
+  width: $button-life;
   border: none;
   background-color: $second_col;
-  border-radius: $button / 2;
+  border-radius: $button-life / 2;
 }
 
 .generation {
   border: none;
-  height: 20px;
-  width: 50px;
   background-color: $third_col;
   color: $second_col;
   border-radius: $border-radius;
   font-size: $font-size;
   text-align: center;
+  height: $button-height;
+  width: $button-width;
 }

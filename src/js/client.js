@@ -154,14 +154,24 @@ class Main extends React.Component {
           <h1>Game of Life</h1>
           <hr/>
         </div>
-        <div className='controller'>
-          <Timer
-            startTimer={() => this.startTimer()}
-            stopTimer={() => this.stopTimer()}
-          />
-          <Counter
-            clearBoard={() => this.clearBoard()}
-            generation={this.state.generation}
+        <div className='menuBar'>
+          <div className='controller'>
+            <Timer
+              startTimer={() => this.startTimer()}
+              stopTimer={() => this.stopTimer()}
+            />
+            <Counter
+              clearBoard={() => this.clearBoard()}
+              generation={this.state.generation}
+            />
+          </div>
+          <Settings
+            cols={this.state.cols}
+            colsChange={this.colsChange.bind(this)}
+            rows={this.state.rows}
+            rowsChange={this.rowsChange.bind(this)}
+            speed={this.state.speed}
+            speedChange={this.speedChange.bind(this)}
           />
         </div>
         <div className='game'>
@@ -171,14 +181,6 @@ class Main extends React.Component {
             handleClick={this.handleClick.bind(this)}
           />
         </div>
-        <Settings
-          cols={this.state.cols}
-          colsChange={this.colsChange.bind(this)}
-          rows={this.state.rows}
-          rowsChange={this.rowsChange.bind(this)}
-          speed={this.state.speed}
-          speedChange={this.speedChange.bind(this)}
-        />
       </div>
     );
   }
