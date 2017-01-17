@@ -4,21 +4,18 @@ export default class Settings extends React.Component {
   render() {
     return (
       <div className='settings'>
-        <p>Rows</p>
         <select onChange={this.props.rowsChange} value={this.props.rows}>
           <option value='10'>10</option>
           <option value='20'>20</option>
           <option value='30'>30</option>
           <option value='40'>40</option>
         </select>
-        <p>Cols</p>
         <select onChange={this.props.colsChange} value={this.props.cols}>
           <option value='10'>10</option>
           <option value='20'>20</option>
           <option value='30'>30</option>
           <option value='40'>40</option>
         </select>
-        <p>Speed</p>
         <select onChange={this.props.speedChange} value={this.props.speed}>
           <option value='500'>Fast</option>
           <option value='1000'>Normal</option>

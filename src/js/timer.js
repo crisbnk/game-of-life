@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Timer = ({startTimer, stopTimer}) => {
+const Timer = ({clearBoard, startTimer, stopTimer}) => {
   return (
     <div className='timer'>
       <button className='start' onClick={() => startTimer()}>
@@ -9,11 +9,15 @@ const Timer = ({startTimer, stopTimer}) => {
       <button className='stop' onClick={() => stopTimer()}>
         STOP
       </button>
+      <button className='clear' onClick={() => clearBoard()}>
+        CLEAR
+      </button>
     </div>
   );
 };
 
 Timer.propTypes = {
+  clearBoard: React.PropTypes.func.isRequired,
   startTimer: React.PropTypes.func.isRequired,
   stopTimer: React.PropTypes.func.isRequired
 };

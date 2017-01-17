@@ -43,6 +43,7 @@ body {
 
 hr {
   border-color: $first_col;
+  margin: 0;
 }
 
 .menuBar {
@@ -53,6 +54,7 @@ hr {
   justify-content: center;
   align-items: center;;
   align-content: center;
+  margin-top: 25px;
 }
 
 .game {
@@ -66,21 +68,6 @@ hr {
   background-color: $third_col;
   margin: 25px;
   padding: 25px;
-}
-
-.controller {
-  flex-grow: 1;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;;
-  align-content: center;
-  padding: 5px;
-  button {
-    margin: 0 10px;
-  }
 }
 
 .lifeTable {
@@ -104,9 +91,12 @@ hr {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  align-content: flex-end;
+  align-content: center;
+  button {
+    margin: 0 10px;
+  }
 }
 
 .counter {
@@ -114,9 +104,9 @@ hr {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  align-content: flex-start;
+  align-content: center;
 }
 
 button {
@@ -149,6 +139,15 @@ button.square.zero {
   border-radius: $button-life / 2;
 }
 
+select {
+  height: $button-height;
+  width: $button-width;
+  font-size: $font-size;
+  background-color: $second_col;
+  color: $first_col;
+  margin: 0 10px;
+}
+
 .generation {
   border: none;
   background-color: $third_col;
@@ -158,4 +157,5 @@ button.square.zero {
   text-align: center;
   height: $button-height;
   width: $button-width;
+  margin: 0 10px;
 }

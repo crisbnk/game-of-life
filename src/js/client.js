@@ -155,16 +155,14 @@ class Main extends React.Component {
           <hr/>
         </div>
         <div className='menuBar'>
-          <div className='controller'>
-            <Timer
-              startTimer={() => this.startTimer()}
-              stopTimer={() => this.stopTimer()}
-            />
-            <Counter
-              clearBoard={() => this.clearBoard()}
-              generation={this.state.generation}
-            />
-          </div>
+          <Timer
+            clearBoard={() => this.clearBoard()}
+            startTimer={() => this.startTimer()}
+            stopTimer={() => this.stopTimer()}
+          />
+          <Counter
+            generation={this.state.generation}
+          />
           <Settings
             cols={this.state.cols}
             colsChange={this.colsChange.bind(this)}
