@@ -93,7 +93,7 @@ hr {
 .timer {
   flex-grow: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
@@ -103,6 +103,10 @@ hr {
   border-radius: $border-radius;
   button {
     margin: 0 10px;
+  }
+  label {
+    margin-bottom: 10px;
+    color: $first_col;
   }
 }
 
@@ -144,6 +148,19 @@ button.square.zero {
   border: none;
   background-color: $second_col;
   border-radius: $button-life / 2;
+}
+
+.settingDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  label {
+    color: $first_col;
+    margin-bottom: 10px;
+  }
 }
 
 select {

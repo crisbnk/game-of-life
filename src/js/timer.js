@@ -3,15 +3,18 @@ import React from 'react';
 const Timer = ({clearBoard, startTimer, stopTimer}) => {
   return (
     <div className='timer'>
-      <button className='start' onClick={() => startTimer()}>
-        START
-      </button>
-      <button className='stop' onClick={() => stopTimer()}>
-        STOP
-      </button>
-      <button className='clear' onClick={() => clearBoard()}>
-        CLEAR
-      </button>
+      <label htmlFor='buttons'><i>Controls</i></label>
+      <div id='buttons'>
+        <button className='start' onClick={() => startTimer()}>
+          START
+        </button>
+        <button className='stop' onClick={() => stopTimer()}>
+          STOP
+        </button>
+        <button className='clear' onClick={() => clearBoard()}>
+          CLEAR
+        </button>
+      </div>
     </div>
   );
 };
