@@ -166,3 +166,8 @@ select {
   width: $button-width;
   margin: 0 10px;
 }
+
+.text-right {
+  text-align: right;
+  color: $first_col;
+}

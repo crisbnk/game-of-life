@@ -179,6 +179,9 @@ class Main extends React.Component {
             handleClick={this.handleClick.bind(this)}
           />
         </div>
+        <div className='text-right'>
+          <p>© 2016 CRISBNK</p>
+        </div>
       </div>
     );
   }
